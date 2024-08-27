@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Job</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<div id="navbar-container"></div>
+
+<body class="bg-gray-100">
+
+    <div class="max-w-3xl mx-auto mt-10 bg-white p-8 rounded-lg shadow-lg lg:mb-11">
+        <h1 class="text-2xl font-bold text-indigo-600 mb-6 text-center">Create a New Job</h1>
+        <form id="jobForm">
+            <div class="mb-4">
+                <label for="title" class="block text-gray-700">Job Title</label>
+                <input type="text" id="title" name="title" class="mt-1 p-2 w-full border border-gray-300 rounded"
+                    required>
+            </div>
+
+            <div class="mb-4">
+                <label for="description" class="block text-gray-700">Description</label>
+                <textarea id="description" name="description" rows="4"
+                    class="mt-1 p-2 w-full border border-gray-300 rounded" required></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="category" class="block text-gray-700">Category</label>
+                <select id="category" name="category" class="mt-1 p-2 w-full border border-gray-300 rounded" required>
+                    <!-- Options will be populated dynamically -->
+                </select>
+            </div>
+
+            <div class="mb-4">
+                <label for="location" class="block text-gray-700">Location</label>
+                <input type="text" id="location" name="location" class="mt-1 p-2 w-full border border-gray-300 rounded"
+                    required>
+            </div>
+
+            <div class="mb-4">
+                <label for="experience" class="block text-gray-700">Experience</label>
+                <input type="text" id="experience" name="experience"
+                    class="mt-1 p-2 w-full border border-gray-300 rounded" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="employee_type" class="block text-gray-700">Employee Type</label>
+                <input type="text" id="employee_type" name="employee_type"
+                    class="mt-1 p-2 w-full border border-gray-300 rounded" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="position" class="block text-gray-700">Position</label>
+                <input type="text" id="position" name="position" class="mt-1 p-2 w-full border border-gray-300 rounded"
+                    required>
+            </div>
+
+            <div class="mb-4">
+                <label for="offer_salary" class="block text-gray-700">Offer Salary</label>
+                <input type="number" id="offer_salary" name="offer_salary"
+                    class="mt-1 p-2 w-full border border-gray-300 rounded" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="responsibilities" class="block text-gray-700">Responsibilities</label>
+                <textarea id="responsibilities" name="responsibilities" rows="4"
+                    class="mt-1 p-2 w-full border border-gray-300 rounded" required></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="qualifications" class="block text-gray-700">Qualifications</label>
+                <textarea id="qualifications" name="qualifications" rows="4"
+                    class="mt-1 p-2 w-full border border-gray-300 rounded" required></textarea>
+            </div>
+
+            <div class="mb-4">
+                <label for="skills_experience" class="block text-gray-700">Skills & Experience</label>
+                <textarea id="skills_experience" name="skills_experience" rows="4"
+                    class="mt-1 p-2 w-full border border-gray-300 rounded" required></textarea>
+            </div>
+
+            <button type="submit" class="bg-indigo-600 text-white p-2 rounded w-full">Create Job</button>
+        </form>
+
+        <div id="message" class="mt-4"></div>
+    </div>
+
+    <script src="create-job.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Retrieve the username from localStorage or wherever it's stored
+            const authToken = localStorage.getItem("authToken");
+            const usernameDisplay = document.getElementById("username-display");
+            const mobileUsername = document.getElementById("mobile-username");
+
+            if (authToken) {
+                // Fetch the profile data using the auth token
+                fetch("https://workwave-api-wyrf.onrender.com/employers/profile/", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Token ${authToken}`
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.user) {
+                            usernameDisplay.textContent = data.user; // Display the username on desktop
+                            mobileUsername.textContent = data.user; // Display username in mobile menu
+                        }
+                    })
+                    .catch(error => console.error('Error fetching profile data:', error));
+            } else {
+                usernameDisplay.textContent = "Guest"; // Display "Guest" on desktop
+                mobileUsername.textContent = "Guest"; // Display "Guest" in mobile menu
+            }
+
+            // Desktop Dropdown Menu Toggle
+            const userMenuButton = document.getElementById("userMenuButton");
+            const userMenu = document.getElementById("userMenu");
+
+            userMenuButton.addEventListener("click", () => {
+                userMenu.classList.toggle("hidden");
+            });
+
+            // Close the dropdown if clicked outside
+            document.addEventListener("click", (event) => {
+                if (!userMenuButton.contains(event.target) && !userMenu.contains(event.target)) {
+                    userMenu.classList.add("hidden");
+                }
+            });
+
+            // Logout Functionality
+            const logoutButton = userMenu.querySelector('a[href="#logout"]');
+            logoutButton.addEventListener("click", (event) => {
+                event.preventDefault();
+                // Clear the authentication token and redirect to login page
+                localStorage.removeItem("authToken");
+                window.location.href = "signin-emp.html"; // Redirect to your login page
+            });
+
+            // Mobile Menu Toggle
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Mobile Logout Functionality
+            const mobileLogoutButton = document.getElementById("mobile-logout");
+            mobileLogoutButton.addEventListener("click", (event) => {
+                event.preventDefault();
+                // Clear the authentication token and redirect to login page
+                localStorage.removeItem("authToken");
+                window.location.href = "signin-emp.html"; // Redirect to your login page
+            });
+        });
+
+
+    </script>
+</body>
+
+  <!-- send mail section  -->
+  <section class="lg:flex md:min-h-16 text-center justify-around lg:p-16 p-8 bg-[#343C3F]">
+    <div>
+      <h3 class="text-white font-bold text-xl mb-3">Get New Jobs Notification!</h3>
+      <p class="text-white">Subscribe & get all related jobs notification.</p>
+    </div>
+    <div class="items-center rounded-lg overflow-hidden mt-6">
+      <input type="email" placeholder="Enter your email" class="lg:flex-1 p-2 bg-gray-600 text-white outline-none" />
+      <button class="bg-indigo-500  text-white px-4 py-2 hover:bg-indigo-600">
+        Subscribe
+      </button>
+    </div>
+  </section>
+
+  <!-- footer section -->
+
+  <footer class="bg-gray-800 text-gray-400 p-6 md:p-10">
+    <!-- Desktop Layout -->
+    <div class="hidden md:block">
+      <div class="container mx-auto grid grid-cols-1 md:grid-cols-5 gap-6">
+        <!-- Brand and Description -->
+        <div>
+          <h1 class="text-white text-2xl font-semibold mb-4">WorkWave</h1>
+          <p class="text-gray-400 mb-6">It is a long established fact that a reader will be of a page reader will be of
+            at its layout.</p>
+          <div class="flex space-x-4">
+            <!-- Social Media Icons -->
+            <a href="#" class="hover:text-white"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="hover:text-white"><i class="fab fa-google"></i></a>
+            <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+
+        <!-- Company Links -->
+        <div>
+          <h2 class="text-white text-lg font-semibold mb-4">Company</h2>
+          <ul class="space-y-2">
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">About Us</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Contact Us</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Services</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- For Jobs Links -->
+        <div>
+          <h2 class="text-white text-lg font-semibold mb-4">For Jobs</h2>
+          <ul class="space-y-2">
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Browser Categories</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Browser Jobs</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Job Details</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Bookmark Jobs</a></li>
+          </ul>
+        </div>
+
+        <!-- For Candidates Links -->
+        <div>
+          <h2 class="text-white text-lg font-semibold mb-4">For Candidates</h2>
+          <ul class="space-y-2">
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Candidate List</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Candidate Grid</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Candidate Details</a></li>
+          </ul>
+        </div>
+
+        <!-- Support Links -->
+        <div>
+          <h2 class="text-white text-lg font-semibold mb-4">Support</h2>
+          <ul class="space-y-2">
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Help Center</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">FAQ'S</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile View Flexbox -->
+    <div class="block md:hidden">
+      <div>
+        <h1 class="text-white text-2xl font-semibold mb-4">WorkWave</h1>
+        <p class="text-gray-400 mb-6">It is a long established fact that a reader will be of a page reader will be of at
+          its layout.</p>
+        <div class="flex space-x-4">
+          <!-- Social Media Icons -->
+          <a href="#" class="hover:text-white"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="hover:text-white"><i class="fab fa-google"></i></a>
+          <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="flex flex-wrap justify-between mt-6">
+        <div class="w-1/2 mb-4">
+          <h2 class="text-white text-lg font-semibold mb-2">Company</h2>
+          <ul class="space-y-2">
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">About Us</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Contact Us</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Services</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Blog</a></li>
+          </ul>
+        </div>
+        <div class="w-1/2 mb-4">
+          <h2 class="text-white text-lg font-semibold mb-2">For Jobs</h2>
+          <ul class="space-y-2">
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Browser Categories</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Browser Jobs</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Job Details</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Bookmark Jobs</a></li>
+          </ul>
+        </div>
+        <div class="w-1/2 mb-4">
+          <h2 class="text-white text-lg font-semibold mb-2">For Candidates</h2>
+          <ul class="space-y-2">
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Candidate List</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Candidate Grid</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Candidate Details</a></li>
+          </ul>
+        </div>
+        <div class="w-1/2 mb-4">
+          <h2 class="text-white text-lg font-semibold mb-2">Support</h2>
+          <ul class="space-y-2">
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Help Center</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">FAQ'S</a></li>
+            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                class="hover:text-white transform hover:scale-105 transition-all">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center text-gray-700 text-sm">
+      <p>2024 © WorkWave - Created by <a href="https://github.com/NazmulHasanNahin/" target="_blank"
+          class="text-white hover:underline">Nazmul Hasan Nahin</a></p>
+    </div>
+  </footer>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        fetch('navbar-emp.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            });
+    });
+</script>
+<script src="navbar-emp.js"></script>
+
+</html>

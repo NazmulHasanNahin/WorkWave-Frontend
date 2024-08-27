@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkWave</title>
+    <link rel="icon" href="./image/blck-logo.png" type="image/png">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+
+    <div id="navbar-container"></div>
+
+    <main class=" mx-auto">
+        <section class="bg-[#F1F0FE] p-3 lg:flex lg:justify-around">
+            <div class="nav-down-text lg:mt-32">
+                <h2 class="text-sm font-medium text-gray-700">WE HAVE 150,000+ LIVE JOBS</h2>
+                <div class="mt-4">
+                    <h1 class="text-4xl font-semibold text-gray-700 mb-2">Find your dream jobs</h1>
+                    <div class="flex flex-wrap space-x-3">
+                        <p class="text-4xl font-semibold text-gray-700">with</p>
+                        <p class="text-4xl font-semibold text-[#6c63ff]">WorkWave</p>
+                    </div>
+                    <p class="text-sm font-medium text-gray-700 mt-5">Find jobs, create trackable resumes and enrich
+                        your <br> applications.Carefully crafted after
+                        analyzing the needs of <br>different industries.</p>
+                    <!-- Input box for search  -->
+                    <div class="flex items-center bg-white shadow-md rounded-lg mt-4">
+                        <div class="flex items-center pl-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="h-6 w-6 text-indigo-500">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z" />
+                            </svg>
+                            <input type="text" class="pl-2 pr-4 py-2 w-64 rounded-l-lg border-0 focus:outline-none"
+                                placeholder="Job, Company name...">
+                        </div>
+                        <button onclick="searchJobs()"
+                            class="bg-indigo-500 text-white px-4 py-2 rounded-r-lg hover:bg-indigo-600 focus:outline-none ">
+                            <span class="flex items-center">
+                                Find Job
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-down-img">
+                <img class="lg:w-11/12 lg:mt-32" src="./image/download-removebg-preview.jpg" alt="Download Image">
+            </div>
+        </section>
+        <section id="job-container" class="p-4">
+            <!-- Job listings Show -->
+        </section>
+        <section>
+            <div id="loading-spinner" class="hidden justify-center">
+                <button disabled type="button"
+                    class="text-white bg-indigo-600 hover:bg-indigo-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center">
+                    <svg aria-hidden="true" role="status" class="inline w-4 h-4 me-3 text-white animate-spin"
+                        viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                            fill="#E5E7EB" />
+                        <path
+                            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                            fill="currentColor" />
+                    </svg>
+                    Loading...
+                </button>
+            </div>
+
+            <!-- No Results Found -->
+            <div id="no-results" class="hidden justify-center">
+                <img src="./image/no-results.png" alt="No results found" class="w-64">
+            </div>
+        </section>
+
+        <!-- job category  -->
+
+        <section class="lg:w-[60rem] mx-auto">
+            <div class="text-center">
+                <h1 class="text-gray-600 font-bold text-2xl mb-1">Browser Jobs Categories</h1>
+                <p class="text-gray-600 text-sm">Post a job to tell us about your project. We'll quickly match you with
+                    the right freelancers.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 p-4 lg:mx-auto">
+                    <!-- 1 -->
+                    <a href="job-cat.html" target="_blank"
+                        class="group block p-4 bg-white rounded-xl hover:shadow-lg hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+                        <div class="flex flex-col items-center space-y-2">
+                            <div class="bg-indigo-200 p-3 rounded-lg">
+                                <!-- Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-6 text-indigo-600">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
+                                </svg>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-sm font-medium text-black">IT & Software</div>
+                                <p class="text-xs text-gray-500">224 Jobs</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- 2 -->
+                    <a href="job-cat.html" target="_blank"
+                        class="group block p-4 bg-white rounded-xl  hover:shadow-lg hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+                        <div class="flex flex-col items-center space-y-2">
+                            <div class="bg-indigo-200 p-3 rounded-lg">
+                                <!-- Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-6 text-indigo-600">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+                                </svg>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-sm font-medium text-black">Technology</div>
+                                <p class="text-xs text-gray-500">200 Jobs</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- 3 -->
+                    <a href="job-cat.html" target="_blank"
+                        class="group block p-4 bg-white rounded-xl hover:shadow-lg hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+                        <div class="flex flex-col items-center space-y-2">
+                            <div class="bg-indigo-200 p-3 rounded-lg">
+                                <!-- Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-6 text-indigo-600">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0M12 12.75h.008v.008H12v-.008Z" />
+                                </svg>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-sm font-medium text-black">Government</div>
+                                <p class="text-xs text-gray-500">40 Jobs</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- 4 -->
+                    <a href="job-cat.html" target="_blank"
+                        class="group block p-4 mb-5 bg-white rounded-xl hover:shadow-lg hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+                        <div class="flex flex-col items-center space-y-2">
+                            <div class="bg-indigo-200 p-3 rounded-lg">
+                                <!-- Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-6 text-indigo-600">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm3 0h.008v.008H18V10.5Zm-12 0h.008v.008H6V10.5Z" />
+                                </svg>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-sm font-medium text-black">Accounting/Finance</div>
+                                <p class="text-xs text-gray-500">240 Jobs</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- 5 -->
+                    <a href="job-cat.html" target="_blank"
+                        class="hidden sm:block group p-4 bg-white rounded-xl  hover:shadow-lg hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+                        <div class="flex flex-col items-center space-y-2">
+                            <div class="bg-indigo-200 p-3 rounded-lg">
+                                <!-- Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-6 text-indigo-600">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+                                </svg>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-sm font-medium text-black">Construction</div>
+                                <p class="text-xs text-gray-500">124 Jobs</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- 6 -->
+                    <a href="job-cat.html" target="_blank"
+                        class="hidden sm:block group p-4 bg-white rounded-xl  hover:shadow-lg hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+                        <div class="flex flex-col items-center space-y-2">
+                            <div class="bg-indigo-200 p-3 rounded-lg">
+                                <!-- Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-6 text-indigo-600">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                </svg>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-sm font-medium text-black">Tele-communication</div>
+                                <p class="text-xs text-gray-500">70 Jobs</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- 7 -->
+                    <a href="job-cat.html" target="_blank"
+                        class="hidden sm:block group p-4 bg-white rounded-xl  hover:shadow-lg hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+                        <div class="flex flex-col items-center space-y-2">
+                            <div class="bg-indigo-200 p-3 rounded-lg">
+                                <!-- Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-6 text-indigo-600">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                                </svg>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-sm font-medium text-black">Design & Multimedia</div>
+                                <p class="text-xs text-gray-500">90 Jobs</p>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- 8 -->
+                    <a href="job-cat.html" target="_blank"
+                        class="hidden sm:block group p-4 bg-white rounded-xl  hover:shadow-lg hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+                        <div class="flex flex-col items-center space-y-2">
+                            <div class="bg-indigo-200 p-3 rounded-lg">
+                                <!-- Icon -->
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-6 text-indigo-600">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
+                                </svg>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-sm font-medium text-black">Human Resource</div>
+                                <p class="text-xs text-gray-500">48 Jobs</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+            </div>
+            <!-- browse category button  -->
+            <div class="flex items-center justify-center my-8">
+                <a href="job-cat.html" target="_blank"
+                    class="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-indigo-600 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group">
+                    <span
+                        class="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-indigo-600 group-hover:h-full"></span>
+                    <span class="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
+                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </span>
+                    <span
+                        class="absolute left-0 pl-2.5 -translate-x-12 group-hover:translate-x-0 ease-out duration-200">
+                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </span>
+                    <span
+                        class="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white">Browse
+                        All Categories</span>
+                </a>
+            </div>
+
+        </section>
+
+        <!--All job list show  -->
+
+        <section class="bg-[#F8F9FC]">
+            <div class="text-center mt-32">
+                <h1 class="my-14 invisible">a</h1>
+                <h1 class="text-gray-600 font-bold text-3xl mb-1">New & Random Jobs</h1>
+                <p class="text-gray-600 text-sm">Post a job to tell us about your project. We'll quickly match you with
+                    the right freelancers.</p>
+            </div>
+            <div id="jobs-container" class="container mx-auto px-4 py-8">
+                <!-- Job here -->
+            </div>
+            <div class="flex items-center justify-center my-8">
+                <a href="all-jobs.html" target="_blank"
+                    class="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold text-indigo-600 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 group">
+                    <span
+                        class="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-indigo-600 group-hover:h-full"></span>
+                    <span class="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
+                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </span>
+                    <span
+                        class="absolute left-0 pl-2.5 -translate-x-12 group-hover:translate-x-0 ease-out duration-200">
+                        <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </span>
+                    <span
+                        class="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white">View
+                        More</span>
+                </a>
+            </div>
+            <h1 class="my-14 invisible">a</h1>
+        </section>
+
+
+        <!-- How It Work -->
+
+        <section class="mt-16 mx-auto">
+            <div class="lg:flex lg:justify-between lg:items-center">
+                <!-- Text Section -->
+                <div class="container mx-auto px-4 py-8 lg:w-1/2 lg:pl-12">
+                    <h2 class="text-3xl font-semibold mb-4">How It Works</h2>
+                    <p class="text-gray-600 mb-8">Post a job to tell us about your project. We'll quickly match you with
+                        the right freelancers.</p>
+
+                    <div class="space-y-8">
+                        <!-- Step 1 -->
+                        <div class="flex items-start lg:justify-end">
+                            <div class="flex-shrink-0">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-indigo-600 text-white">
+                                    1
+                                </div>
+                            </div>
+                            <div class="ml-4 lg:ml-6">
+                                <h3 class="text-xl font-semibold text-indigo-600">Register an account</h3>
+                                <p class="text-gray-600">Due to its widespread use as filler text for layouts,
+                                    non-readability is of great importance.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="flex items-start lg:justify-end">
+                            <div class="flex-shrink-0">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-300 text-gray-700">
+                                    2
+                                </div>
+                            </div>
+                            <div class="ml-4 lg:ml-6">
+                                <h3 class="text-xl font-semibold text-gray-700">Find your job</h3>
+                                <p class="text-gray-600">There are many variations of passages of available text, but
+                                    the majority have been altered in some form.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flex items-start lg:justify-end">
+                            <div class="flex-shrink-0">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-300 text-gray-700">
+                                    3
+                                </div>
+                            </div>
+                            <div class="ml-4 lg:ml-6">
+                                <h3 class="text-xl font-semibold text-gray-700">Apply for job</h3>
+                                <p class="text-gray-600">It is a long established fact that a reader will be distracted
+                                    by the readable content of a page.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Image Section -->
+                <div class="lg:w-1/3 mx-auto">
+                    <img class="lg:w-full" src="./image/how_it_work_sec_pic.png" alt="">
+                </div>
+            </div>
+        </section>
+
+        <!-- Browse Our 5,000+ Latest Jobs -->
+
+        <section class="bg-gray-50 py-12">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-semibold text-indigo-600">
+                    Browse Our <span class="text-yellow-400">5,000+</span> Latest Jobs
+                </h2>
+                <p class="text-gray-600 mt-4">
+                    Post a job to tell us about your project. We'll quickly match you with the right freelancers.
+                </p>
+                <div class="mt-6">
+                    <a href="#"
+                        class="inline-block px-8 py-3 bg-indigo-600 text-white rounded-md font-medium hover:bg-purple-700">
+                        Get Started Now <span aria-hidden="true" class="ml-2">🚀</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- client review  -->
+
+        <section>
+            <div class="w-full max-w-lg mx-auto mt-10">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold text-gray-800">Happy Candidates</h2>
+                    <p class="text-md text-gray-500 mt-2">
+                        Post a job to tell us about your project. We'll quickly match you with the right freelancers.
+                    </p>
+                </div>
+
+                <div id="carousel" class="relative mt-8">
+                    <!-- Slides -->
+                    <div class="carousel-item text-center transition-opacity duration-700">
+                        <div>
+                            <img src="https://img.icons8.com/color/48/000000/instagram-new--v1.png" class="mx-auto mb-4"
+                                alt="Instagram logo" />
+                            <p class="font-semibold text-3xl italic text-gray-800">Instagram</p>
+                            <p class="text-gray-600 mt-4">
+                                " Very well thought out and articulate communication. Clear milestones, deadlines and
+                                fast work.
+                                Patience. Infinite patience. No shortcuts. Even if the client is being careless. "
+                            </p>
+                            <p class="mt-4 font-bold text-lg">Charles Dickens</p>
+                            <p class="text-md text-gray-500">Store Assistant</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item text-center hidden transition-opacity duration-700">
+                        <div>
+                            <img src="https://img.icons8.com/color/48/000000/twitter--v1.png" class="mx-auto mb-4"
+                                alt="Twitter logo" />
+                            <p class="font-semibold text-3xl italic text-gray-800">Twitter</p>
+                            <p class="text-gray-600 mt-4">
+                                " Communication was top-notch, the project was delivered on time, and the quality
+                                exceeded my expectations. "
+                            </p>
+                            <p class="mt-4 font-bold text-lg">Jane Austen</p>
+                            <p class="text-md text-gray-500">Content Writer</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item text-center hidden transition-opacity duration-700">
+                        <div>
+                            <img src="https://img.icons8.com/color/48/000000/linkedin.png" class="mx-auto mb-4"
+                                alt="LinkedIn logo" />
+                            <p class="font-semibold text-3xl italic text-gray-800">LinkedIn</p>
+                            <p class="text-gray-600 mt-4">
+                                " Professional, efficient, and delivered high-quality work. Would definitely hire again!
+                                "
+                            </p>
+                            <p class="mt-4 font-bold text-lg">Mark Twain</p>
+                            <p class="text-md text-gray-500">Marketing Specialist</p>
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="flex justify-center mt-6 space-x-2">
+                        <button class="w-4 h-4 bg-gray-300 rounded-full transition-all duration-300 ease-in-out"
+                            onclick="setSlide(0)"></button>
+                        <button class="w-4 h-4 bg-gray-300 rounded-full transition-all duration-300 ease-in-out"
+                            onclick="setSlide(1)"></button>
+                        <button class="w-4 h-4 bg-gray-300 rounded-full transition-all duration-300 ease-in-out"
+                            onclick="setSlide(2)"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- blog section  -->
+
+        <section class="bg-[#F8F9FC]">
+            <h1 class="my-14 invisible">a</h1>
+            <div class="w-full max-w-screen-xl mx-auto mt-10 px-4">
+                <div class="text-center">
+                    <h2 class="text-2xl font-bold text-gray-800">Quick Career Tips</h2>
+                    <p class="text-md text-gray-500 mt-2">
+                        Post a job to tell us about your project. We'll quickly match you with the right freelancers.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+                    <!-- Card 1 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img class="w-full h-48 object-cover" src="./image/blog-img-1.jpg" alt="Image 1">
+                        <div class="p-6">
+                            <div class="flex items-center text-gray-500 text-sm mb-4">
+                                <span class="mr-2">🧑‍💼 Dirio Walls</span>
+                                <span class="mr-2">📅 01 July, 2021</span>
+                                <span>❤️ 33</span>
+                                <span class="ml-2">💬 08</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">How apps is the IT world ?</h3>
+                            <p class="text-gray-600 text-sm mb-4">The final text is not yet available. Dummy texts have
+                                Internet been in use by typesetters.</p>
+                            <a href="#" class="text-indigo-600 font-semibold hover:text-indigo-800">Read more &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img class="w-full h-48 object-cover" src="./image/blog-img-2.jpg" alt="Image 2">
+                        <div class="p-6">
+                            <div class="flex items-center text-gray-500 text-sm mb-4">
+                                <span class="mr-2">🧑‍💼 Brandon Carney</span>
+                                <span class="mr-2">📅 25 June, 2021</span>
+                                <span>❤️ 44</span>
+                                <span class="ml-2">💬 25</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Smartest Applications for Business ?
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4">Due to its widespread use as filler text for layouts,
+                                non-readability is of great importance.</p>
+                            <a href="#" class="text-indigo-600 font-semibold hover:text-indigo-800">Read more &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img class="w-full h-48 object-cover" src="./image/blog-img-3.jpg" alt="Image 3">
+                        <div class="p-6">
+                            <div class="flex items-center text-gray-500 text-sm mb-4">
+                                <span class="mr-2">🧑‍💼William Mooneyhan</span>
+                                <span class="mr-2">📅 16 March, 2021</span>
+                                <span>❤️ 68</span>
+                                <span class="ml-2">💬 20</span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800 mb-2">Design your apps in your own way ?</h3>
+                            <p class="text-gray-600 text-sm mb-4">One disadvantage of Lorem Ipsum is that in Latin
+                                certain letters appear more frequently than others.</p>
+                            <a href="#" class="text-indigo-600 font-semibold hover:text-indigo-800">Read more &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h1 class="my-14 invisible">a</h1>
+        </section>
+
+        <!-- company used  -->
+
+        <section>
+            <div class="lg:flex justify-center items-center space-x-8 py-10 flex-wrap lg:flex-nowrap">
+                <!-- Woocommerce -->
+                <div class="relative group mb-8 lg:mb-0">
+                    <img src="./image/woocomerece-logo.png" alt="Woocommerce" class="h-16 w-30 mx-auto">
+                    <div
+                        class="absolute left-1/2 transform -translate-x-1/2 -translate-y-[350%] bg-black text-white text-sm rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        Woocommerce
+                        <div
+                            class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-black rotate-45">
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Envato -->
+                <div class="relative group mb-8 lg:mb-0">
+                    <img src="./image/envato-logo.png" alt="Envato" class="h-24 w-30 mx-auto">
+                    <div
+                        class="absolute left-1/2 transform -translate-x-1/2 -translate-y-[350%] bg-black text-white text-sm rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        Envato
+                        <div
+                            class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-black rotate-45">
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Magento -->
+                <div class="relative group mb-8 lg:mb-0">
+                    <img src="./image/magento-logo.png" alt="Magento" class="h-24 w-30 mx-auto">
+                    <div
+                        class="absolute left-1/2 transform -translate-x-1/2 -translate-y-[350%] bg-black text-white text-sm rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        Magento
+                        <div
+                            class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-black rotate-45">
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- WordPress -->
+                <div class="relative group mb-8 lg:mb-0">
+                    <img src="./image/wordpress-logo.png" alt="WordPress" class="h-24 w-30 mx-auto">
+                    <div
+                        class="absolute left-1/2 transform -translate-x-1/2 -translate-y-[450%] bg-black text-white text-sm rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        WordPress
+                        <div
+                            class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-black rotate-45">
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Shopify -->
+                <div class="relative group mb-8 lg:mb-0">
+                    <img src="./image/shopify-logo.png" alt="Shopify" class="h-24 w-30 mx-auto">
+                    <div
+                        class="absolute left-1/2 transform -translate-x-1/2 -translate-y-[350%] bg-black text-white text-sm rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        Shopify
+                        <div
+                            class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-black rotate-45">
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- REVEAL -->
+                <div class="relative group mb-8 lg:mb-0">
+                    <img src="./image/reveal-logo.png" alt="REVEAL" class="h-24 w-30 mx-auto">
+                    <div
+                        class="absolute left-1/2 transform -translate-x-1/2 -translate-y-[350%] bg-black text-white text-sm rounded px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        REVEAL
+                        <div
+                            class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-3 h-3 bg-black rotate-45">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </section>
+
+
+        <!-- send mail section  -->
+        <section class="lg:flex md:min-h-16 text-center justify-around lg:p-16 p-8 bg-[#343C3F]">
+            <div>
+                <h3 class="text-white font-bold text-xl mb-3">Get New Jobs Notification!</h3>
+                <p class="text-white">Subscribe & get all related jobs notification.</p>
+            </div>
+            <div class="items-center rounded-lg overflow-hidden mt-6">
+                <input type="email" placeholder="Enter your email"
+                    class="lg:flex-1 p-2 bg-gray-600 text-white outline-none" />
+                <button class="bg-indigo-500  text-white px-4 py-2 hover:bg-indigo-600">
+                    Subscribe
+                </button>
+            </div>
+        </section>
+
+        <!-- footer section -->
+
+        <footer class="bg-gray-800 text-gray-400 p-6 md:p-10">
+            <!-- Desktop Layout -->
+            <div class="hidden md:block">
+                <div class="container mx-auto grid grid-cols-1 md:grid-cols-5 gap-6">
+                    <!-- Brand and Description -->
+                    <div>
+                        <h1 class="text-white text-2xl font-semibold mb-4">WorkWave</h1>
+                        <p class="text-gray-400 mb-6">It is a long established fact that a reader will be of a page reader will be of at its layout.</p>
+                        <div class="flex space-x-4">
+                            <!-- Social Media Icons -->
+                            <a href="#" class="hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="hover:text-white"><i class="fab fa-google"></i></a>
+                            <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+            
+                    <!-- Company Links -->
+                    <div>
+                        <h2 class="text-white text-lg font-semibold mb-4">Company</h2>
+                        <ul class="space-y-2">
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">About Us</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Contact Us</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Services</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Blog</a></li>
+                        </ul>
+                    </div>
+            
+                    <!-- For Jobs Links -->
+                    <div>
+                        <h2 class="text-white text-lg font-semibold mb-4">For Jobs</h2>
+                        <ul class="space-y-2">
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Browser Categories</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Browser Jobs</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Job Details</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Bookmark Jobs</a></li>
+                        </ul>
+                    </div>
+            
+                    <!-- For Candidates Links -->
+                    <div>
+                        <h2 class="text-white text-lg font-semibold mb-4">For Candidates</h2>
+                        <ul class="space-y-2">
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Candidate List</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Candidate Grid</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Candidate Details</a></li>
+                        </ul>
+                    </div>
+            
+                    <!-- Support Links -->
+                    <div>
+                        <h2 class="text-white text-lg font-semibold mb-4">Support</h2>
+                        <ul class="space-y-2">
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Help Center</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">FAQ'S</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile View Flexbox -->
+            <div class="block md:hidden">
+                <div>
+                    <h1 class="text-white text-2xl font-semibold mb-4">WorkWave</h1>
+                    <p class="text-gray-400 mb-6">It is a long established fact that a reader will be of a page reader will be of at its layout.</p>
+                    <div class="flex space-x-4">
+                        <!-- Social Media Icons -->
+                        <a href="#" class="hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fab fa-google"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="flex flex-wrap justify-between mt-6">
+                    <div class="w-1/2 mb-4">
+                        <h2 class="text-white text-lg font-semibold mb-2">Company</h2>
+                        <ul class="space-y-2">
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">About Us</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Contact Us</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Services</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="w-1/2 mb-4">
+                        <h2 class="text-white text-lg font-semibold mb-2">For Jobs</h2>
+                        <ul class="space-y-2">
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Browser Categories</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Browser Jobs</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Job Details</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Bookmark Jobs</a></li>
+                        </ul>
+                    </div>
+                    <div class="w-1/2 mb-4">
+                        <h2 class="text-white text-lg font-semibold mb-2">For Candidates</h2>
+                        <ul class="space-y-2">
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Candidate List</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Candidate Grid</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Candidate Details</a></li>
+                        </ul>
+                    </div>
+                    <div class="w-1/2 mb-4">
+                        <h2 class="text-white text-lg font-semibold mb-2">Support</h2>
+                        <ul class="space-y-2">
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Help Center</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">FAQ'S</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#" class="hover:text-white transform hover:scale-105 transition-all">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="mt-8 text-center text-gray-700 text-sm">
+                <p>2024 © WorkWave - Created by <a href="https://github.com/NazmulHasanNahin/" target="_blank" class="text-white hover:underline">Nazmul Hasan Nahin</a></p>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('navbar-jobseeker.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                });
+        });
+    </script>
+    <script src="navbar-jobseeker.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

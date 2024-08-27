@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Job</title>
+    <link rel="icon" href="./image/blck-logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: linear-gradient(to bottom right, #6366f1, #a5b4fc);
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .card {
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-animate {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-animate:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div class="container mx-auto p-6 flex justify-center items-center min-h-screen">
+        <div class="w-full max-w-3xl card rounded-lg shadow-lg p-8">
+            <header class="mb-8 text-center">
+                <h1 class="text-4xl font-extrabold text-indigo-600">Edit Job Details</h1>
+                <p class="text-gray-600 mt-2">Update the job details below. The category and date posted fields are not editable.</p>
+            </header>
+
+            <form id="editJobForm" class="space-y-6">
+                <input type="hidden" id="jobId" value="">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex flex-col">
+                        <label for="jobTitle" class="text-gray-700 font-medium mb-2">Title</label>
+                        <input type="text" id="jobTitle" class="form-input border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500" required>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="jobLocation" class="text-gray-700 font-medium mb-2">Location</label>
+                        <input type="text" id="jobLocation" class="form-input border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500" required>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="jobSalary" class="text-gray-700 font-medium mb-2">Salary</label>
+                        <input type="text" id="jobSalary" class="form-input border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="jobExperience" class="text-gray-700 font-medium mb-2">Experience</label>
+                        <input type="text" id="jobExperience" class="form-input border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="jobCategory" class="text-gray-700 font-medium mb-2">Category</label>
+                        <input type="text" id="jobCategory" class="form-input border border-gray-300 rounded-lg bg-gray-200 text-gray-500 cursor-not-allowed px-4 py-2" readonly>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="jobEmployeeType" class="text-gray-700 font-medium mb-2">Employee Type</label>
+                        <input type="text" id="jobEmployeeType" class="form-input border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500" required>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="jobPosition" class="text-gray-700 font-medium mb-2">Position</label>
+                        <input type="text" id="jobPosition" class="form-input border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500" required>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="jobDatePosted" class="text-gray-700 font-medium mb-2">Date Posted</label>
+                        <input type="text" id="jobDatePosted" class="form-input border border-gray-300 rounded-lg bg-gray-200 text-gray-500 cursor-not-allowed px-4 py-2" readonly>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="flex flex-col">
+                        <label for="jobDescription" class="text-gray-700 font-medium mb-2">Description</label>
+                        <textarea id="jobDescription" class="form-textarea border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500" rows="4" required></textarea>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="jobResponsibilities" class="text-gray-700 font-medium mb-2">Responsibilities</label>
+                        <textarea id="jobResponsibilities" class="form-textarea border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500" rows="4" required></textarea>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="jobQualifications" class="text-gray-700 font-medium mb-2">Qualifications</label>
+                        <textarea id="jobQualifications" class="form-textarea border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500" rows="4" required></textarea>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label for="jobSkillsExperience" class="text-gray-700 font-medium mb-2">Skills & Experience</label>
+                        <textarea id="jobSkillsExperience" class="form-textarea border border-gray-300 rounded-lg shadow-sm px-4 py-2 focus:ring-indigo-500 focus:border-indigo-500" rows="4" required></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md btn-animate hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Update Job</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="edit-job.js"></script>
+</body>
+</html>

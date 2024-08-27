@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Now</title>
+    <link rel="icon" href="./image/blck-logo.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+    <!-- Button to Open Modal -->
+    <button id="openModalBtn" class="bg-indigo-600 text-white px-4 py-2 rounded-md">Apply For This Job</button>
+
+    <!-- Modal -->
+    <div id="modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg w-11/12 max-w-lg p-6">
+            <div class="flex justify-between items-center">
+                <h2 class=" text-gray-600 text-2xl font-semibold ml-14 lg:ml-32">Apply For This Job</h2>
+                <button id="closeModalBtn" class="text-gray-600 hover:text-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <form class="mt-4">
+                <div class="mb-4">
+                    <label class="block text-gray-600">Name</label>
+                    <input type="text" class="w-full mt-1 px-4 py-2 border rounded-md" placeholder="Enter your name">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-600">Email Address</label>
+                    <input type="email" class="w-full mt-1 px-4 py-2 border rounded-md" placeholder="Enter your email">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-600">Cover Letter</label>
+                    <textarea class="w-full mt-1 px-4 py-2 border rounded-md" rows="4" placeholder="Enter your message"></textarea>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-600">Resume Upload</label>
+                    <input type="file" class="w-full mt-1 px-4 py-2 border rounded-md">
+                </div>
+                <div class="flex justify-end">
+                    <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-md">Send Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="./apply-now-modal.js"></script>
+</body>
+</html>

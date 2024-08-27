@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkWave - Job Details</title>
+    <link rel="icon" href="./employer/image/blck-logo.png" type="image/png">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div id="navbar-container"></div>
+    <main class="mx-auto bg-[#F1F0FE]">
+        <section class="bg-[#6055F2] ">
+            <h1 class="py-16 text-center text-4xl font-semibold text-white">Job Details</h1>
+            <p class="pb-6 text-center text-sm font-semibold text-white">HOME > COMPANY > DETAILS</p>
+        </section>
+        <section id="job-details-container" class="p-4">
+            <!-- Job details will be displayed here -->
+            <!-- all code in js  -->
+
+        </section>
+        <section class="mb-5">
+            <!-- Button to Open Modal -->
+            <div class="text-center">
+                <button id="openModalBtn" class="bg-indigo-600 text-white px-4 py-2 rounded-md">Apply For This
+                    Job</button>
+            </div>
+
+            <!-- Modal -->
+            <!-- Apply Now Modal -->
+            <div id="apply-modal"
+                class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center">
+                <div class="bg-white p-8 rounded-lg max-w-lg w-full">
+                    <h2 class="text-xl font-bold mb-4">Apply for Job</h2>
+                    <form id="apply-form">
+                        <div class="mb-4">
+                            <label for="cover-letter" class="block text-sm font-medium text-gray-700">Cover
+                                Letter</label>
+                            <textarea id="cover-letter" name="coverLetter" rows="4"
+                                class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="resume" class="block text-sm font-medium text-gray-700">Resume</label>
+                            <input type="file" id="resume" name="resume"
+                                class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm">
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="button" id="cancel-apply"
+                                class="mr-4 px-4 py-2 bg-gray-500 text-white rounded-lg">Cancel</button>
+                            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded-lg">Submit
+                                Application</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- modal  -->
+ 
+            <!-- <div id="modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
+            
+                <div class="bg-white rounded-lg w-11/12 max-w-lg p-6">
+                    <div class="flex justify-between items-center">
+                        <h2 class=" text-gray-600 text-2xl font-semibold ml-14 lg:ml-32">Apply For This Job</h2>
+                        <button id="closeModalBtn" class="text-gray-600 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <form class="mt-4">
+                        <div class="mb-4">
+                            <label class="block text-gray-600">Name</label>
+                            <input type="text" class="w-full mt-1 px-4 py-2 border rounded-md"
+                                placeholder="Enter your name">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-600">Email Address</label>
+                            <input type="email" class="w-full mt-1 px-4 py-2 border rounded-md"
+                                placeholder="Enter your email">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-600">Cover Letter</label>
+                            <textarea class="w-full mt-1 px-4 py-2 border rounded-md" rows="4"
+                                placeholder="Enter your message"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-600">Resume Upload</label>
+                            <input type="file" class="w-full mt-1 px-4 py-2 border rounded-md">
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-md">Send
+                                Application</button>
+                        </div>
+                    </form>
+                </div>
+            </div> -->
+
+            <div id="modal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
+                <div class="bg-white rounded-lg w-11/12 max-w-lg p-6">
+                    <div class="flex justify-between items-center">
+                        <h2 class=" text-gray-600 text-2xl font-semibold ml-14 lg:ml-32">Apply For This Job</h2>
+                        <button id="closeModalBtn" class="text-gray-600 hover:text-gray-900">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <form class="mt-4">
+                        <div class="mb-4">
+                            <label class="block text-gray-600">Name</label>
+                            <input type="text" class="w-full mt-1 px-4 py-2 border rounded-md" placeholder="Enter your name">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-600">Email Address</label>
+                            <input type="email" class="w-full mt-1 px-4 py-2 border rounded-md" placeholder="Enter your email">
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-600">Cover Letter</label>
+                            <textarea class="w-full mt-1 px-4 py-2 border rounded-md" rows="4" placeholder="Enter your message"></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-600">Resume Upload</label>
+                            <input type="file" class="w-full mt-1 px-4 py-2 border rounded-md">
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-md">Send Application</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+        </section>
+        <!-- send mail section  -->
+        <section class="lg:flex md:min-h-16 text-center justify-around lg:p-16 p-8 bg-[#343C3F]">
+            <div>
+                <h3 class="text-white font-bold text-xl mb-3">Get New Jobs Notification!</h3>
+                <p class="text-white">Subscribe & get all related jobs notification.</p>
+            </div>
+            <div class="items-center rounded-lg overflow-hidden mt-6">
+                <input type="email" placeholder="Enter your email"
+                    class="lg:flex-1 p-2 bg-gray-600 text-white outline-none" />
+                <button class="bg-indigo-500  text-white px-4 py-2 hover:bg-indigo-600">
+                    Subscribe
+                </button>
+            </div>
+        </section>
+
+
+        <!-- footer section -->
+
+        <footer class="bg-gray-800 text-gray-400 p-6 md:p-10">
+            <!-- Desktop Layout -->
+            <div class="hidden md:block">
+                <div class="container mx-auto grid grid-cols-1 md:grid-cols-5 gap-6">
+                    <!-- Brand and Description -->
+                    <div>
+                        <h1 class="text-white text-2xl font-semibold mb-4">WorkWave</h1>
+                        <p class="text-gray-400 mb-6">It is a long established fact that a reader will be of a page
+                            reader will be of at its layout.</p>
+                        <div class="flex space-x-4">
+                            <!-- Social Media Icons -->
+                            <a href="#" class="hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="hover:text-white"><i class="fab fa-google"></i></a>
+                            <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Company Links -->
+                    <div>
+                        <h2 class="text-white text-lg font-semibold mb-4">Company</h2>
+                        <ul class="space-y-2">
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">About Us</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Contact Us</a>
+                            </li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Services</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Blog</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- For Jobs Links -->
+                    <div>
+                        <h2 class="text-white text-lg font-semibold mb-4">For Jobs</h2>
+                        <ul class="space-y-2">
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Browser
+                                    Categories</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Browser Jobs</a>
+                            </li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Job Details</a>
+                            </li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Bookmark Jobs</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- For Candidates Links -->
+                    <div>
+                        <h2 class="text-white text-lg font-semibold mb-4">For Candidates</h2>
+                        <ul class="space-y-2">
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Candidate List</a>
+                            </li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Candidate Grid</a>
+                            </li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Candidate
+                                    Details</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Support Links -->
+                    <div>
+                        <h2 class="text-white text-lg font-semibold mb-4">Support</h2>
+                        <ul class="space-y-2">
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Help Center</a>
+                            </li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">FAQ'S</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Privacy Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile View Flexbox -->
+            <div class="block md:hidden">
+                <div>
+                    <h1 class="text-white text-2xl font-semibold mb-4">WorkWave</h1>
+                    <p class="text-gray-400 mb-6">It is a long established fact that a reader will be of a page reader
+                        will be of at its layout.</p>
+                    <div class="flex space-x-4">
+                        <!-- Social Media Icons -->
+                        <a href="#" class="hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fab fa-google"></i></a>
+                        <a href="#" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="flex flex-wrap justify-between mt-6">
+                    <div class="w-1/2 mb-4">
+                        <h2 class="text-white text-lg font-semibold mb-2">Company</h2>
+                        <ul class="space-y-2">
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">About Us</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Contact Us</a>
+                            </li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Services</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="w-1/2 mb-4">
+                        <h2 class="text-white text-lg font-semibold mb-2">For Jobs</h2>
+                        <ul class="space-y-2">
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Browser
+                                    Categories</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Browser Jobs</a>
+                            </li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Job Details</a>
+                            </li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Bookmark Jobs</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="w-1/2 mb-4">
+                        <h2 class="text-white text-lg font-semibold mb-2">For Candidates</h2>
+                        <ul class="space-y-2">
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Candidate List</a>
+                            </li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Candidate Grid</a>
+                            </li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Candidate
+                                    Details</a></li>
+                        </ul>
+                    </div>
+                    <div class="w-1/2 mb-4">
+                        <h2 class="text-white text-lg font-semibold mb-2">Support</h2>
+                        <ul class="space-y-2">
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Help Center</a>
+                            </li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">FAQ'S</a></li>
+                            <li><span class="mr-2 text-white">&gt;</span><a href="#"
+                                    class="hover:text-white transform hover:scale-105 transition-all">Privacy Policy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center text-gray-700 text-sm">
+                <p>2024 © WorkWave - Created by <a href="https://github.com/NazmulHasanNahin/" target="_blank"
+                        class="text-white hover:underline">Nazmul Hasan Nahin</a></p>
+            </div>
+        </footer>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                });
+        });
+    </script>
+    <script src="navbar.js"></script>
+    <script src="job-details.js"></script>
+    <script src="index.js"></script>
+    <script src="apply-now-modal.js"></script>
+</body>
+
+</html>

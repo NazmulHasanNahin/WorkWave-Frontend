@@ -1,0 +1,65 @@
+<header class="bg-white">
+    <nav class="flex justify-between items-center mx-10">
+        <div class="nav-img">
+            <img class="w-16 lg:w-20" src="./employer/image/blck-logo.png" alt="Logo">
+        </div>
+
+        <div class="hidden lg:flex lg:flex-1 lg:justify-center">
+            <ul class="flex space-x-8">
+                <li><a href="index.html" class="hover:text-violet-600">Home</a></li>
+                <li><a href="job-cat.html" class="hover:text-violet-600">Category</a></li>
+                <li><a href="all-jobs.html" class="hover:text-violet-600">Jobs</a></li>
+                <li><a href="./contact_us.html" class="hover:text-violet-600">Contact Us</a></li>
+            </ul>
+        </div>
+
+        <!-- Right-side user profile -->
+         <!-- not need  -->
+        <div class="hidden lg:flex items-center space-x-4">
+            <span id="username-display" class="text-gray-800"></span> <!-- Username will be shown here -->
+            <div class="relative">
+                <img src="./employer/image/default.png" class="w-8 h-8 rounded-full cursor-pointer border-2 border-black"
+                    id="userMenuButton" alt="Profile Picture">
+                <ul id="userMenu" class="hidden absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg">
+                    <li><a href="employer/emp-dashboard.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Employer Dashboard</a></li>
+                    <li><a href="employer/create-job.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Create
+                            Job</a></li>
+
+                    <li><a href="employer/emp-profile.html" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">My
+                            Profile</a></li>
+                    <li><a href="#logout" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <!-- Mobile menu button -->
+        <div class="block lg:hidden">
+            <button id="menu-btn" class="text-black focus:outline-none mr-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="lg:hidden hidden">
+        <ul class="flex flex-col space-y-2 p-4 text-black">
+            <li><a href="index.html" class="hover:text-violet-600">Home</a></li>
+            <li><a href="job-cat.html" class="hover:text-violet-600">Category</a></li>
+            <li><a href="all-jobs.html" class="hover:text-violet-600">Jobs</a></li>
+            <li><a href="employer/signin-emp.html" class="hover:text-violet-600">Join As an Employer</a></li>
+            <li><a href="job_seeker/signin-job.html" class="hover:text-violet-600">Join As a Job Seeker</a></li>
+
+        </ul>
+    </div>
+
+</header>
+<body>
+    <script src="./navbar.js"></script>
+</body>
+

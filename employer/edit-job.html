@@ -30,6 +30,7 @@
         }
     </style>
 </head>
+<div id="navbar-container"></div>
 <body class="bg-gray-100">
 
     <div class="container mx-auto p-6 flex justify-center items-center min-h-screen">
@@ -110,7 +111,21 @@
             </form>
         </div>
     </div>
-
+    <div id="footer-placeholder"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('navbar-emp.html')
+              .then(response => response.text())
+              .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+              });
+              fetch('footer.html')
+              .then(response => response.text())
+              .then(data => {
+                  document.getElementById('footer-placeholder').innerHTML = data;
+              });
+          });
+    </script>
     <script src="edit-job.js"></script>
 </body>
 </html>

@@ -15,7 +15,6 @@ fetch('https://workwave-api-wyrf.onrender.com/jobs/jobs/')
             <div class="flex items-center space-x-3">
                 <div>
                     <h2 class="text-lg font-semibold text-gray-800">${job.title}</h2>
-                    <p class="text-sm text-gray-500">${job.company_name}</p>
                     <div class="flex items-center space-x-2 text-sm text-gray-500 mt-1 ">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5  text-indigo-600">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />

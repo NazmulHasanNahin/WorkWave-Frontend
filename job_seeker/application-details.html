@@ -7,6 +7,7 @@
   <link rel="icon" href="./image/blck-logo.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+<div id="navbar-container"></div>
 <body class="bg-gray-100">
     <div class="container mx-auto p-4">
         <!-- Details Section -->
@@ -14,8 +15,21 @@
             <!-- Details will be dynamically inserted here -->
         </div>
     </div>
+<div id="footer-placeholder"></div>
 
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('navbar-jobseeker.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                });
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+        });
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const applicationId = urlParams.get('applicationId');

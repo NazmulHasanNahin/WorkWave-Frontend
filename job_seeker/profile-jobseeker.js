@@ -1,13 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
     const token = localStorage.getItem('authToken');
 
-    // Selecting elements
     const overviewTab = document.getElementById("overview-tab");
     const settingsTab = document.getElementById("settings-tab");
     const overviewContent = document.getElementById("overview-content");
     const settingsContent = document.getElementById("settings-content");
 
-    // Function to show the Overview tab
     const showOverview = () => {
         overviewContent.classList.remove("hidden");
         settingsContent.classList.add("hidden");
@@ -15,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
         settingsTab.classList.remove("text-indigo-600", "border-indigo-600");
     };
 
-    // Function to show the Settings tab
     const showSettings = () => {
         overviewContent.classList.add("hidden");
         settingsContent.classList.remove("hidden");
@@ -23,16 +20,14 @@ document.addEventListener('DOMContentLoaded', function () {
         overviewTab.classList.remove("text-indigo-600", "border-indigo-600");
     };
 
-    // Event listeners for tab switching
     overviewTab.addEventListener("click", showOverview);
     settingsTab.addEventListener("click", showSettings);
 
-    // Show the Overview tab by default on page load
     showOverview();
 
     if (!token) {
         alert('Unauthorized. Please log in.');
-        window.location.href = '/login.html'; // Redirect to login page if unauthorized
+        window.location.href = '/login.html'; 
         return;
     }
 
@@ -40,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const updateUrl = 'https://workwave-api-wyrf.onrender.com/job_seekers/profile/edit/';
     const profileElements = {
         fullName: document.getElementById('fullName'),
-        username: document.getElementById('username'),  // Add username element
+        username: document.getElementById('username'), 
         about: document.getElementById('about'),
         resumeDownload: document.getElementById('resumeDownload'),
         education: document.getElementById('education'),

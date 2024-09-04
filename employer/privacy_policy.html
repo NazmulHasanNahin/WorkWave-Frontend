@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <link rel="icon" href="./image/blck-logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <!-- Navbar Placeholder -->
+    <div id="navbar-container"></div>
+
+    <!-- Header Section -->
+    <header class="bg-indigo-600 text-white py-12">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-bold">Privacy Policy</h1>
+            <p class="mt-4 text-lg">Your privacy is important to us</p>
+        </div>
+    </header>
+
+    <!-- Privacy Policy Section -->
+    <section class="container mx-auto my-12 px-6 lg:px-20">
+        <div class="space-y-8">
+            <!-- Policy Section 1 -->
+            <div>
+                <h3 class="text-xl font-bold text-indigo-600">Information We Collect</h3>
+                <p class="mt-2 text-gray-700">We collect information you provide directly to us, such as when you create an account, update your profile, apply for a job, or communicate with us.</p>
+            </div>
+
+            <!-- Policy Section 2 -->
+            <div>
+                <h3 class="text-xl font-bold text-indigo-600">How We Use Your Information</h3>
+                <p class="mt-2 text-gray-700">We use your information to provide, maintain, and improve our services, to communicate with you, and to personalize your experience.</p>
+            </div>
+
+            <!-- Policy Section 3 -->
+            <div>
+                <h3 class="text-xl font-bold text-indigo-600">Sharing Your Information</h3>
+                <p class="mt-2 text-gray-700">We do not share your personal information with third parties except as described in this Privacy Policy or with your consent.</p>
+            </div>
+
+            <!-- Policy Section 4 -->
+            <div>
+                <h3 class="text-xl font-bold text-indigo-600">Your Rights</h3>
+                <p class="mt-2 text-gray-700">You have the right to access, update, and delete your personal information. You can do so by logging into your account or contacting us directly.</p>
+            </div>
+
+            <!-- Policy Section 5 -->
+            <div>
+                <h3 class="text-xl font-bold text-indigo-600">Data Security</h3>
+                <p class="mt-2 text-gray-700">We take reasonable measures to protect your personal information from loss, theft, misuse, unauthorized access, disclosure, alteration, and destruction.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script>
+        // Load Navbar and Footer
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('navbar-emp.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                });
+
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        });
+    </script>
+    <script src="./navbar-emp.js"></script>
+</body>
+
+</html>

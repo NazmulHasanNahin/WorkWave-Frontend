@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Details - WorkWave</title>
+    <link rel="icon" href="./image/blck-logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<div id="navbar-container"></div>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Blog Post 1 -->
+    <section class="max-w-7xl mx-auto p-6 lg:p-12">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
+            <img class="w-full h-64 object-cover" src="./image/blog-img-1.jpg" alt="How apps is the IT world?">
+            <div class="p-8">
+                <div class="flex items-center text-gray-500 text-sm mb-4">
+                    <span class="mr-2">🧑‍💼 Dirio Walls</span>
+                    <span class="mr-2">📅 01 July, 2021</span>
+                    <span>❤️ 33</span>
+                    <span class="ml-2">💬 08</span>
+                </div>
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">How apps is the IT world?</h2>
+                <p class="text-gray-600 mb-6">The world of IT has evolved significantly over the past few decades, and the development of applications has played a crucial role in this transformation. From simple tools designed to perform specific tasks to complex systems that manage entire businesses, apps are now an integral part of the IT landscape.</p>
+                <p class="text-gray-600 mb-6">Apps have changed the way we interact with technology, making it more accessible and user-friendly. Whether it's mobile apps that we use on our smartphones or desktop applications that help us with our daily work, the impact of these tools is undeniable.</p>
+                <p class="text-gray-600 mb-6">Moreover, with the rise of cloud computing and artificial intelligence, apps are becoming more powerful and versatile, offering features that were once thought to be science fiction. The future of apps in the IT world is indeed bright, with endless possibilities for innovation and growth.</p>
+            </div>
+        </div>
+
+        <!-- Blog Post 2 -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
+            <img class="w-full h-64 object-cover" src="./image/blog-img-2.jpg" alt="Smartest Applications for Business">
+            <div class="p-8">
+                <div class="flex items-center text-gray-500 text-sm mb-4">
+                    <span class="mr-2">🧑‍💼 Brandon Carney</span>
+                    <span class="mr-2">📅 25 June, 2021</span>
+                    <span>❤️ 44</span>
+                    <span class="ml-2">💬 25</span>
+                </div>
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Smartest Applications for Business</h2>
+                <p class="text-gray-600 mb-6">In today’s fast-paced business world, staying ahead of the competition requires the use of smart applications that can optimize operations and drive growth. These applications are designed to automate processes, improve decision-making, and enhance customer experiences.</p>
+                <p class="text-gray-600 mb-6">From customer relationship management (CRM) software to enterprise resource planning (ERP) systems, businesses have a wide range of tools at their disposal. These applications not only streamline workflows but also provide valuable insights through data analytics, helping businesses make informed decisions.</p>
+                <p class="text-gray-600 mb-6">Additionally, with the integration of artificial intelligence and machine learning, these applications are becoming even smarter, offering predictive analytics and personalized experiences for customers. As businesses continue to embrace digital transformation, the role of smart applications will only become more significant.</p>
+            </div>
+        </div>
+
+        <!-- Blog Post 3 -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
+            <img class="w-full h-64 object-cover" src="./image/blog-img-3.jpg" alt="Design your apps in your own way">
+            <div class="p-8">
+                <div class="flex items-center text-gray-500 text-sm mb-4">
+                    <span class="mr-2">🧑‍💼 William Mooneyhan</span>
+                    <span class="mr-2">📅 16 March, 2021</span>
+                    <span>❤️ 68</span>
+                    <span class="ml-2">💬 20</span>
+                </div>
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Design your apps in your own way</h2>
+                <p class="text-gray-600 mb-6">The beauty of app development lies in its flexibility. Developers have the freedom to design and build applications that are tailored to specific needs and preferences. Whether you’re creating a mobile app for a niche market or a web app for a global audience, the possibilities are endless.</p>
+                <p class="text-gray-600 mb-6">One of the key aspects of app design is the user interface (UI). A well-designed UI not only enhances the user experience but also increases engagement and satisfaction. Developers must focus on creating interfaces that are intuitive, responsive, and visually appealing.</p>
+                <p class="text-gray-600 mb-6">Moreover, with the rise of low-code and no-code platforms, even non-developers can now design and build apps in their own way. These platforms provide drag-and-drop tools and pre-built templates, making it easier than ever to bring your app ideas to life.</p>
+            </div>
+        </div>
+    </section>
+    <div id="footer-placeholder"></div>    
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Fetch and load the navbar
+        fetch('navbar.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-container').innerHTML = data;
+            });
+  
+        // Fetch and load the footer
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    });
+  </script>
+  <script src="navbar.js"></script>
+</html>

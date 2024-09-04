@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Tips</title>
+    <link rel="icon" href="./image/blck-logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <!-- Navbar Placeholder -->
+    <div id="navbar-container"></div>
+
+    <!-- Header Section -->
+    <header class="bg-indigo-600 text-white py-12">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-bold">Top Tips for Job Candidates</h1>
+            <p class="mt-4 text-lg">Prepare to shine in your next job interview!</p>
+        </div>
+    </header>
+
+    <!-- Tips Section -->
+    <section class="container mx-auto my-12 px-6 lg:px-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Tip Card 1 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-indigo-600 text-white rounded-full h-12 w-12 flex items-center justify-center">
+                        <i class="fas fa-search text-xl"></i>
+                    </div>
+                    <h3 class="ml-4 text-xl font-bold">Research the Company</h3>
+                </div>
+                <p class="text-gray-700">Understanding the company’s mission and values will help you tailor your responses and demonstrate your interest in the position.</p>
+            </div>
+
+            <!-- Tip Card 2 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-indigo-600 text-white rounded-full h-12 w-12 flex items-center justify-center">
+                        <i class="fas fa-file-alt text-xl"></i>
+                    </div>
+                    <h3 class="ml-4 text-xl font-bold">Tailor Your Resume</h3>
+                </div>
+                <p class="text-gray-700">Customize your resume to highlight experiences and skills that are relevant to the job you’re applying for.</p>
+            </div>
+
+            <!-- Tip Card 3 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-indigo-600 text-white rounded-full h-12 w-12 flex items-center justify-center">
+                        <i class="fas fa-comments text-xl"></i>
+                    </div>
+                    <h3 class="ml-4 text-xl font-bold">Practice Common Questions</h3>
+                </div>
+                <p class="text-gray-700">Prepare answers to common interview questions to feel more confident and articulate during the interview.</p>
+            </div>
+
+            <!-- Tip Card 4 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-indigo-600 text-white rounded-full h-12 w-12 flex items-center justify-center">
+                        <i class="fas fa-user-clock text-xl"></i>
+                    </div>
+                    <h3 class="ml-4 text-xl font-bold">Arrive Early</h3>
+                </div>
+                <p class="text-gray-700">Punctuality shows that you value the interviewer's time and are serious about the job.</p>
+            </div>
+
+            <!-- Tip Card 5 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-indigo-600 text-white rounded-full h-12 w-12 flex items-center justify-center">
+                        <i class="fas fa-thumbs-up text-xl"></i>
+                    </div>
+                    <h3 class="ml-4 text-xl font-bold">Show Enthusiasm</h3>
+                </div>
+                <p class="text-gray-700">Express your excitement about the role and company. Employers value passion and a positive attitude.</p>
+            </div>
+
+            <!-- Tip Card 6 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <div class="flex items-center mb-4">
+                    <div class="bg-indigo-600 text-white rounded-full h-12 w-12 flex items-center justify-center">
+                        <i class="fas fa-question text-xl"></i>
+                    </div>
+                    <h3 class="ml-4 text-xl font-bold">Ask Questions</h3>
+                </div>
+                <p class="text-gray-700">Prepare insightful questions to ask at the end of the interview to demonstrate your interest and engagement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script>
+        // Load Navbar and Footer
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                });
+
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        });
+    </script>
+    <script src="./navbar.js"></script>
+</body>
+
+</html>

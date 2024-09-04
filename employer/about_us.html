@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - WorkWave</title>
+    <link rel="icon" href="./image/blck-logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white text-gray-900">
+
+    <div id="navbar-container"></div>
+    <hr>
+    <!-- About Section -->
+    <section class="container mx-auto px-6 py-16 ">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div>
+                <h1 class="text-4xl font-extrabold text-indigo-600 mb-4">About WorkWave</h1>
+                <p class="text-lg text-gray-700 mb-4">
+                    WorkWave is the leading job portal dedicated to connecting talent with the best opportunities. We
+                    are committed to helping professionals advance their careers by offering a platform that facilitates
+                    easy access to top job listings.
+                </p>
+                <p class="text-lg text-gray-700">
+                    With cutting-edge technology and a user-friendly interface, we are transforming the way people find
+                    jobs and how companies find talent.
+                </p>
+            </div>
+            <div>
+                <img src="./image/about_us.jpg" alt="About WorkWave" class="rounded-lg shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="bg-gray-100 py-16">
+        <div class="container mx-auto px-6 text-center grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h2 class="text-4xl font-extrabold text-indigo-600">350M+</h2>
+                <p class="text-lg text-gray-700 mt-2">Unique Visitors</p>
+            </div>
+            <div>
+                <h2 class="text-4xl font-extrabold text-indigo-600">3.5M+</h2>
+                <p class="text-lg text-gray-700 mt-2">Employers</p>
+            </div>
+            <div>
+                <h2 class="text-4xl font-extrabold text-indigo-600">60+</h2>
+                <p class="text-lg text-gray-700 mt-2">Countries</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our People Section -->
+    <section class="container mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <img src="./image/our_people.png" alt="Our People" class="rounded-lg shadow-lg">
+            </div>
+            <div>
+                <h2 class="text-4xl font-extrabold text-indigo-600 mb-4">Our People</h2>
+                <p class="text-lg text-gray-700">
+                    Our dedicated team is passionate about helping people get jobs. We have over 11,500 global employees
+                    working tirelessly to ensure that our platform remains the best place for job seekers to find
+                    meaningful work.
+                </p>
+                <p class="text-lg text-gray-700 mt-4">
+                    We foster a collaborative workplace culture that strives to create the best experience for job
+                    seekers and employers alike.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Leadership Section -->
+    <section class="bg-gray-100 py-16">
+        <div class="container mx-auto px-6 text-center grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="order-2 md:order-1">
+                <h2 class="text-4xl font-extrabold text-indigo-600 mb-4">Our Leadership</h2>
+                <p class="text-lg text-gray-700">
+                    Our leadership team is diverse, dedicated, and committed to empowering our employees to fulfill our
+                    mission. By fostering strong and impactful connections, they are committed to guiding WorkWave
+                    towards success.
+                </p>
+                <!-- <a href="#"
+                    class="mt-6 inline-block bg-indigo-600 text-white py-2 px-4 rounded-full text-lg hover:bg-indigo-500">Meet
+                    our team</a> -->
+            </div>
+            <div class="order-1 md:order-2">
+                <img src="./image/leadership.jpg" alt="Our Leadership" class="rounded-lg shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Commitments Section -->
+    <section class="container mx-auto px-6 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <img src="./image/commitments.jpg" alt="Our Commitments" class="rounded-lg shadow-lg">
+            </div>
+            <div>
+                <h2 class="text-4xl font-extrabold text-indigo-600 mb-4">Our Commitments</h2>
+                <p class="text-lg text-gray-700">
+                    We are committed to making a positive impact on society by connecting people to opportunities that
+                    matter. We continuously strive to improve our platform and offerings to ensure that we are making a
+                    difference in the lives of job seekers and employers.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('navbar-emp.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                });
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                });
+        });
+    </script>
+    <script src="navbar-emp.js"></script>
+</body>
+
+</html>

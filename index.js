@@ -44,7 +44,7 @@ const displayJobs = (jobs) => {
                         <div class="flex justify-between items-start">
                             <div>
                                 <h2 class="text-lg font-semibold text-gray-800">${job.title}</h2>
-                                <p class="text-sm text-gray-500">${job.company_name}</p>
+                                 
                                 <div class="flex items-center space-x-2 text-sm text-gray-500 mt-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 8.25h-7.5m7.5 3h-7.5m7.5 3h-7.5M12 7.5h0m0 4.5h0m0 4.5h0m5.25-4.5A4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 0 1 4.5 4.5zm0 0v9.75m-9-4.5A4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 0 1 4.5 4.5z" />
@@ -92,7 +92,7 @@ fetch('https://workwave-api-wyrf.onrender.com/jobs/jobs/')
                         <div class="flex justify-between items-start">
                             <div>
                                 <h2 class="text-lg font-semibold text-gray-800">${job.title}</h2>
-                                <p class="text-sm text-gray-500">${job.company_name}</p>
+                                 
                                 <div class="flex items-center space-x-2 text-sm text-gray-500 mt-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 8.25h-7.5m7.5 3h-7.5m7.5 3h-7.5M12 7.5h0m0 4.5h0m0 4.5h0m5.25-4.5A4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 0 1 4.5 4.5zm0 0v9.75m-9-4.5A4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 0 1 4.5 4.5z" />

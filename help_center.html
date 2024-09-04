@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center</title>
+    <link rel="icon" href="./image/blck-logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+    <!-- Navbar Placeholder -->
+    <div id="navbar-container"></div>
+
+    <!-- Header Section -->
+    <header class="bg-indigo-600 text-white py-12">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-bold">Help Center</h1>
+            <p class="mt-4 text-lg">How can we assist you today?</p>
+        </div>
+    </header>
+
+    <!-- Help Topics Section -->
+    <section class="container mx-auto my-12 px-6 lg:px-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Topic Card 1 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <h3 class="text-xl font-bold text-indigo-600">Account Management</h3>
+                <p class="mt-2 text-gray-700">Find help with account setup, settings, and more.</p>
+            </div>
+
+            <!-- Topic Card 2 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <h3 class="text-xl font-bold text-indigo-600">Billing & Payments</h3>
+                <p class="mt-2 text-gray-700">Get answers to questions about billing, invoices, and payment methods.</p>
+            </div>
+
+            <!-- Topic Card 3 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <h3 class="text-xl font-bold text-indigo-600">Technical Support</h3>
+                <p class="mt-2 text-gray-700">Having technical issues? We're here to help.</p>
+            </div>
+
+            <!-- Topic Card 4 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <h3 class="text-xl font-bold text-indigo-600">Job Applications</h3>
+                <p class="mt-2 text-gray-700">Need assistance with applying to jobs? Learn more here.</p>
+            </div>
+
+            <!-- Topic Card 5 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <h3 class="text-xl font-bold text-indigo-600">Privacy & Security</h3>
+                <p class="mt-2 text-gray-700">Understand how we protect your data and privacy.</p>
+            </div>
+
+            <!-- Topic Card 6 -->
+            <div class="bg-white shadow-lg rounded-lg p-6">
+                <h3 class="text-xl font-bold text-indigo-600">General Questions</h3>
+                <p class="mt-2 text-gray-700">Find answers to common questions about our services.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script>
+        // Load Navbar and Footer
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('navbar.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                });
+
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+        });
+    </script>
+    <script src="./navbar.js"></script>
+</body>
+
+</html>

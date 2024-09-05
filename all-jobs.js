@@ -3,22 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchBar = document.getElementById('search-bar');
     const categoryFilter = document.getElementById('category-filter');
     const searchResultsHeader = document.getElementById('search-results-header');
-  
-    // Fetch and load the navbar
-    fetch('navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('navbar-container').innerHTML = data;
-      })
-      .catch(err => console.error('Error loading navbar:', err));
-  
-    // Fetch and load the footer
-    fetch('footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-placeholder').innerHTML = data;
-      })
-      .catch(err => console.error('Error loading footer:', err));
+
   
     // Load categories into the dropdown
     fetch('https://workwave-api-wyrf.onrender.com/jobs/categories/')

@@ -12,35 +12,48 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
-
-<div id="navbar-container"></div>
+        <div id="navbar-container"></div>
 <main class="mx-auto">
-  <section>
-    <div class="bg-indigo-600">
-      <h1 class="py-16 text-center text-4xl font-semibold text-white">Job List</h1>
-      <p class="pb-6 text-center text-sm font-semibold text-white">HOME > PAGES > Job List</p>
-    </div>
-  </section>
+          <section>
+            <div class="bg-indigo-600">
+              <h1 class="py-16 text-center text-4xl font-semibold text-white">Job List</h1>
+              <p class="pb-6 text-center text-sm font-semibold text-white">HOME > PAGES > Job List</p>
+            </div>
+          </section>
 
-  <body class="bg-gray-100">
-    <div class="container mx-auto px-4 py-8">
-      <h1 class="text-3xl font-bold mb-4">All Jobs</h1>
-      <div id="all-jobs-container" class="space-y-4">
-        <!-- All job  -->
-      </div>
-    </div>
+          <body class="bg-gray-100">
+            <div class="container mx-auto px-4 py-8">
+              <div class="flex justify-between items-center mb-4">
+                <!-- Search Bar -->
+                <input type="text" id="search-bar" class="border p-2 w-full max-w-lg rounded-lg" placeholder="Search for jobs...">
+                <!-- Category Filter -->
+                <select id="category-filter" class="border p-2 rounded-lg ml-4">
+                  <option value="">All Categories</option>
+                </select>
+              </div>
+              <div id="search-results-header" class="hidden">
+                <hr class="my-4">
+                <h2 class="text-2xl font-bold">Search Results:</h2>
+              </div>
+              <div id="all-jobs-container" class="space-y-4">
+                <!-- All jobs will be displayed here -->
+              </div>
+            </div>
+          </body>
 
-  </body>
-  <div id="footer-placeholder"></div>
 
 </main>
+<div id="footer-placeholder"></div>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+      // Fetch and load the navbar
       fetch('navbar-emp.html')
           .then(response => response.text())
           .then(data => {
               document.getElementById('navbar-container').innerHTML = data;
           });
+
+      // Fetch and load the footer
       fetch('footer.html')
           .then(response => response.text())
           .then(data => {

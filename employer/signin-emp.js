@@ -11,7 +11,7 @@ const handleLogin = (event) => {
 
     console.log("Login Data:", loginData);  // Log the data to ensure it's correct
 
-    fetch("https://workwave-api-wyrf.onrender.com/employers/auth/login/", {
+    fetch("https://workwave-api.vercel.app/employers/auth/login/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

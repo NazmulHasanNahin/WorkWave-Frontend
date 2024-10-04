@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   
     // Load categories into the dropdown
-    fetch('https://workwave-api-wyrf.onrender.com/jobs/categories/')
+    fetch('https://workwave-api.vercel.app/jobs/categories/')
       .then(response => response.json())
       .then(categories => {
         categories.forEach(category => {
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Function to fetch jobs
     function fetchJobs(endpoint = 'jobs/') {
-      fetch(`https://workwave-api-wyrf.onrender.com/jobs/${endpoint}`)
+      fetch(`https://workwave-api.vercel.app/jobs/${endpoint}`)
         .then(response => response.json())
         .then(data => {
           if (data.length === 0) {
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Function to load jobs for a specific category
     function loadJobsForCategory(categoryId) {
-      fetch(`https://workwave-api-wyrf.onrender.com/jobs/categories/${categoryId}/`)
+      fetch(`https://workwave-api.vercel.app/jobs/categories/${categoryId}/`)
         .then(response => response.json())
         .then(data => {
           if (data.jobs.length === 0) {

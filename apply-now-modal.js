@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //         const jobId = 'job_id';
 
 //         try {
-//             const response = await fetch('https://workwave-api-wyrf.onrender.com/applications/apply/', {
+//             const response = await fetch('https://workwave-api.vercel.app/applications/apply/', {
 //                 method: 'POST',
 //                 headers: {
 //                     'Authorization': `Bearer ${token}`,

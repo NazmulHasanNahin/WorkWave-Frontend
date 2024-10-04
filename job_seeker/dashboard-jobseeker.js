@@ -11,7 +11,7 @@ const dashboard = () => {
         return;
     }
 
-    fetch("https://workwave-api-wyrf.onrender.com/job_seekers/dashboard/", {
+    fetch("https://workwave-api.vercel.app/job_seekers/dashboard/", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -65,7 +65,7 @@ const deleteApplication = (applicationId) => {
     const token = localStorage.getItem('authToken');
 
     if (confirm("Are you sure you want to delete this application?")) {
-        fetch(`https://workwave-api-wyrf.onrender.com/applications/${applicationId}/delete/`, {
+        fetch(`https://workwave-api.vercel.app/applications/${applicationId}/delete/`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',

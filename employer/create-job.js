@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const messageDiv = document.getElementById('message');
 
     // Fetch job categories and populate the dropdown
-    fetch('https://workwave-api-wyrf.onrender.com/jobs/categories/')
+    fetch('https://workwave-api.vercel.app/jobs/categories/')
         .then(response => response.json())
         .then(data => {
             const categorySelect = document.getElementById('category');
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData(jobForm);
         const jobData = Object.fromEntries(formData);
 
-        fetch('https://workwave-api-wyrf.onrender.com/jobs/jobs/', {
+        fetch('https://workwave-api.vercel.app/jobs/jobs/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

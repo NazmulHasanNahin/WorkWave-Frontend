@@ -13,7 +13,7 @@ document.getElementById('signup-form').addEventListener('submit', function (even
         confirm_password: document.getElementById('confirm_password').value
     };
 
-    fetch('https://workwave-api-wyrf.onrender.com/employers/auth/registration/', {
+    fetch('https://workwave-api.vercel.app/employers/auth/registration/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

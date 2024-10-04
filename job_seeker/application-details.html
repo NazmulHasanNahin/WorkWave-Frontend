@@ -39,7 +39,7 @@
         const fetchApplicationDetails = (applicationId) => {
             const token = localStorage.getItem("authToken");
 
-            fetch(`https://workwave-api-wyrf.onrender.com/applications/${applicationId}/`, {
+            fetch(`https://workwave-api.vercel.app/applications/${applicationId}/`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -95,7 +95,7 @@
             const token = localStorage.getItem('authToken');
 
             if (confirm("Are you sure you want to delete this application?")) {
-                fetch(`https://workwave-api-wyrf.onrender.com/applications/${applicationId}/delete/`, {
+                fetch(`https://workwave-api.vercel.app/applications/${applicationId}/delete/`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

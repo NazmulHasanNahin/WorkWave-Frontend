@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        fetch("https://workwave-api-wyrf.onrender.com/employers/profile/", {
+        fetch("https://workwave-api.vercel.app/employers/profile/", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
             company_website: document.querySelector("input[name='company_website']").value
         };
 
-        fetch("https://workwave-api-wyrf.onrender.com/employers/profile/edit/", {
+        fetch("https://workwave-api.vercel.app/employers/profile/edit/", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

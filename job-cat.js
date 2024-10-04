@@ -1,5 +1,5 @@
 const loadJobCategories = () => {
-    fetch('https://workwave-api-wyrf.onrender.com/jobs/categories/')
+    fetch('https://workwave-api.vercel.app/jobs/categories/')
         .then(res => res.json())
         .then(data => displayJobCategories(data))
         .catch(err => console.error('Error fetching categories:', err));
@@ -28,7 +28,7 @@ const loadJobCategories = () => {
   };
   
   const loadJobsForCategory = (categoryId) => {
-    fetch(`https://workwave-api-wyrf.onrender.com/jobs/categories/${categoryId}/`)
+    fetch(`https://workwave-api.vercel.app/jobs/categories/${categoryId}/`)
         .then(response => response.json())
         .then(data => {
             console.log('Jobs data received:', data); 

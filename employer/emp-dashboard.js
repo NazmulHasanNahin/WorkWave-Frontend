@@ -6,7 +6,7 @@ const dashboard = () => {
         return;
     }
 
-    fetch("https://workwave-api-wyrf.onrender.com/employers/dashboard/", {
+    fetch("https://workwave-api.vercel.app/employers/dashboard/", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -80,7 +80,7 @@ const deleteJob = (jobId) => {
     }
 
     if (confirm("Are you sure you want to delete this job?")) {
-        fetch(`https://workwave-api-wyrf.onrender.com/jobs/jobs/${jobId}/`, {
+        fetch(`https://workwave-api.vercel.app/jobs/jobs/${jobId}/`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Token ${token}`

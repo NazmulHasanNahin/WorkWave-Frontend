@@ -4,7 +4,7 @@ const getJobIdFromUrl = () => {
   };
   
   const loadJobDetails = (jobId) => {
-    fetch(`https://workwave-api-wyrf.onrender.com/jobs/jobs/${jobId}/`)
+    fetch(`https://workwave-api.vercel.app/jobs/jobs/${jobId}/`)
       .then(res => res.json())
       .then((data) => displayJobDetails(data))
       .catch((err) => console.log(err));

@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (authToken) {
             // Fetch the profile data using the auth token
-            fetch("https://workwave-api-wyrf.onrender.com/job_seekers/profile/", {
+            fetch("https://workwave-api.vercel.app/job_seekers/profile/", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

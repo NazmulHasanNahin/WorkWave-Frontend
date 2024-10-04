@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Fetch job details
-    fetch(`https://workwave-api-wyrf.onrender.com/jobs/jobs/${jobId}/`, {
+    fetch(`https://workwave-api.vercel.app/jobs/jobs/${jobId}/`, {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             skills_experience: document.getElementById('jobSkillsExperience').value
         };
 
-        fetch(`https://workwave-api-wyrf.onrender.com/jobs/jobs/${jobId}/`, {
+        fetch(`https://workwave-api.vercel.app/jobs/jobs/${jobId}/`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

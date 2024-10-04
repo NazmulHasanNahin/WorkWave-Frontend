@@ -16,7 +16,7 @@ const searchJobs = () => {
         jobContainer.innerHTML = '';
         noResults.classList.add('hidden');
 
-        fetch(`https://workwave-api-wyrf.onrender.com/jobs/search/?q=${encodeURIComponent(query)}`)
+        fetch(`https://workwave-api.vercel.app/jobs/search/?q=${encodeURIComponent(query)}`)
             .then(res => res.json())
             .then((data) => {
                 loadingSpinner.classList.add('hidden');
@@ -78,7 +78,7 @@ const displayJobs = (jobs) => {
 
 
 // Fetch jobs from your API or data source
-fetch('https://workwave-api-wyrf.onrender.com/jobs/jobs/')
+fetch('https://workwave-api.vercel.app/jobs/jobs/')
     .then(response => response.json())
     .then(data => {
         // Limit to 5 jobs

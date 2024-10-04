@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append('job', jobId);
 
         try {
-            const response = await fetch('https://workwave-api-wyrf.onrender.com/applications/apply/', {
+            const response = await fetch('https://workwave-api.vercel.app/applications/apply/', {
                 method: 'POST',
                 headers: {
                     'Authorization': `Token ${token}`,

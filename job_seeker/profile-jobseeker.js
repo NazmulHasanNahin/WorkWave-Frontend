@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    const profileUrl = 'https://workwave-api-wyrf.onrender.com/job_seekers/profile/';
-    const updateUrl = 'https://workwave-api-wyrf.onrender.com/job_seekers/profile/edit/';
+    const profileUrl = 'https://workwave-api.vercel.app/job_seekers/profile/';
+    const updateUrl = 'https://workwave-api.vercel.app/job_seekers/profile/edit/';
     const profileElements = {
         fullName: document.getElementById('fullName'),
         username: document.getElementById('username'), 
